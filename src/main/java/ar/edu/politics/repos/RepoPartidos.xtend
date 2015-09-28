@@ -1,9 +1,10 @@
 package ar.edu.politics.repos
 
 import ar.edu.politics.domain.Partido
-import org.uqbar.commons.model.CollectionBasedHome
+import org.hibernate.Criteria
+import org.hibernate.criterion.Restrictions
 
-class RepoPartidos extends CollectionBasedHome<Partido> {
+class RepoPartidos extends RepoDefault<Partido> {
 	
 	static RepoPartidos instance
 	
@@ -13,17 +14,15 @@ class RepoPartidos extends CollectionBasedHome<Partido> {
 		}
 		return instance
 	}
-		
-	override protected getCriterio(Partido example) {
-		[ Partido partido | partido.nombre.equalsIgnoreCase(example.nombre) ]
-	}
-	
-	override createExample() {
-		new Partido
-	}
-	
+
 	override getEntityType() {
 		typeof(Partido)
+	}
+
+	override addQueryByExample(Criteria criteria, Partido partido) {
+		if (partido.nombre != null) {
+			criteria.add(Restrictions.eq("nombre", partido.nombre))
+		}
 	}
 	
 }

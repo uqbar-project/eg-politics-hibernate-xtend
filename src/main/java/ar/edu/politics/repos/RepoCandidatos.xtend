@@ -1,9 +1,10 @@
 package ar.edu.politics.repos
 
 import ar.edu.politics.domain.Candidato
-import org.uqbar.commons.model.CollectionBasedHome
+import org.hibernate.Criteria
+import org.hibernate.criterion.Restrictions
 
-class RepoCandidatos extends CollectionBasedHome<Candidato> {
+class RepoCandidatos extends RepoDefault<Candidato> {
 
 	static RepoCandidatos instance
 	
@@ -14,16 +15,14 @@ class RepoCandidatos extends CollectionBasedHome<Candidato> {
 		return instance
 	}
 		
-	override protected getCriterio(Candidato example) {
-		[ Candidato candidato | candidato.nombre.equals(example.nombre)]
-	}
-	
-	override createExample() {
-		new Candidato
-	}
-	
 	override getEntityType() {
 		typeof(Candidato)
+	}
+
+	override addQueryByExample(Criteria criteria, Candidato candidato) {
+		if (candidato.nombre != null) {
+			criteria.add(Restrictions.eq("nombre", candidato.nombre))
+		}
 	}
 	
 }

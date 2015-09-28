@@ -1,16 +1,34 @@
 package ar.edu.politics.domain
 
 import java.util.Date
+import javax.persistence.Column
+import javax.persistence.DiscriminatorColumn
+import javax.persistence.DiscriminatorType
+import javax.persistence.DiscriminatorValue
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.Inheritance
+import javax.persistence.InheritanceType
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-class Partido extends Entity {
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipoCandidato", discriminatorType=DiscriminatorType.INTEGER)
+abstract class Partido {
+
+	@Id
+	@GeneratedValue
+	private Long id
 	
+	@Column(length=150)
 	String nombre
+	
+	@Column
 	int afiliados
 	
 	def void validar() {
@@ -29,9 +47,12 @@ class Partido extends Entity {
 }
 
 @Accessors
+@Entity
+@DiscriminatorValue("1")
 class Peronista extends Partido {
-	
-	boolean populista
+
+	@Column	
+	boolean populista = false
 	
 	new() {
 		
@@ -40,8 +61,11 @@ class Peronista extends Partido {
 }
 
 @Accessors
+@Entity
+@DiscriminatorValue("2")
 class Preservativo extends Partido {
 
+	@Column
 	Date fechaCreacion
 	
 	new() {

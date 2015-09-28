@@ -1,18 +1,35 @@
 package ar.edu.politics.domain
 
 import java.util.List
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.ManyToOne
+import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-class Candidato extends Entity {
+@Entity
+class Candidato {
 	
+	@Id
+	@GeneratedValue
+	private Long id
+	
+	@Column(length=100)
 	String nombre
+	
+	@ManyToOne()
 	Partido partido
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	List<Promesa> promesas = newArrayList 
 	
 	new() {

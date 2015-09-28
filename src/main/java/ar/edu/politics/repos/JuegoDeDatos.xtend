@@ -118,11 +118,11 @@ class JuegoDeDatos {
 	def initZonas() {
 		nacional = new Zona => [
 			descripcion = "Elecciones nacionales"
-			candidatos = newArrayList(sosa, benitez, ramos, rota)
+			candidatos = newHashSet(sosa, benitez, ramos, rota)
 		]
 		springfield = new Zona => [
 			descripcion = "Springfield"
-			candidatos = newArrayList(yapura, monti, cafrune)
+			candidatos = newHashSet(yapura, monti, cafrune)
 		]
 		this.crearZona(nacional)
 		this.crearZona(springfield)

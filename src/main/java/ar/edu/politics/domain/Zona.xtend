@@ -1,17 +1,32 @@
 package ar.edu.politics.domain
 
-import java.util.List
+import java.util.HashSet
+import java.util.Set
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 
+@Entity
 @Observable
 @Accessors
-class Zona extends Entity {
+class Zona {
 	
+	@Id
+	@GeneratedValue
+	private Long id
+	
+	@Column(length=150)
 	String descripcion
-	List<Candidato> candidatos = newArrayList
+	
+	@OneToMany(fetch=FetchType.LAZY)
+	Set<Candidato> candidatos = new HashSet
 		
 	new() {
 		

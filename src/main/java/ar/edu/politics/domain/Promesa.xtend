@@ -1,15 +1,27 @@
 package ar.edu.politics.domain
 
 import java.util.Date
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
+@Entity
 class Promesa {
 	
+	@Id
+	@GeneratedValue
+	private Long id
+	
+	@Column
 	Date fecha
+
+	@Column(length=150)
 	String accionPrometida
 	
 	new() {
