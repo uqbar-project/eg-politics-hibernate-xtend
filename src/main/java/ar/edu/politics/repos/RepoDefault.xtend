@@ -15,8 +15,11 @@ abstract class RepoDefault<T> {
 	def List<T> allInstances() {
 		val entityManager = this.entityManager
 		try {
-			val query = entityManager.criteriaBuilder.createQuery(entityType)
-			return entityManager.createQuery(query).resultList as List<T> 
+			val criteria = entityManager.criteriaBuilder
+			val query = criteria.createQuery as CriteriaQuery<T>
+			val from = query.from(entityType)
+			query.select(from)
+			entityManager.createQuery(query).resultList
 		} finally {
 			entityManager.close
 		}
@@ -49,7 +52,7 @@ abstract class RepoDefault<T> {
 				transaction.commit
 			]
 		} catch (PersistenceException e) {
-//			entityManager.transaction.rollback
+			entityManager.transaction.rollback
 			throw new RuntimeException("AH, Ha ocurrido un error. JAJAJAJA", e)
 		} finally {
 			entityManager.close

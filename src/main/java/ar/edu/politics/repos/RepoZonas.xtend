@@ -31,8 +31,10 @@ class RepoZonas extends RepoDefault<Zona> {
 		try {
 			val criteria = entityManager.criteriaBuilder
 			val query = criteria.createQuery
-			val camposPartido = query.from(entityType)
-			criteria.equal(camposPartido.get("id"), id)
+			val camposZona = query.from(entityType)
+			camposZona.fetch("candidatos")
+			query.select(camposZona)
+			query.where(criteria.equal(camposZona.get("id"), id))
 			val result = entityManager.createQuery(query).resultList
 				
 			if (result.isEmpty) {
@@ -46,10 +48,3 @@ class RepoZonas extends RepoDefault<Zona> {
 	}
 	
 }
-
-
-
-
-
-
-
