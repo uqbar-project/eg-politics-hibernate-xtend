@@ -6,6 +6,7 @@ import javax.persistence.Persistence
 import javax.persistence.PersistenceException
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
+import javax.persistence.criteria.Root
 
 abstract class RepoDefault<T> {
 	
@@ -30,14 +31,14 @@ abstract class RepoDefault<T> {
 			val query = criteria.createQuery as CriteriaQuery<T>
 			val from = query.from(entityType)
 			query.select(from)
-			generateWhere(criteria, query, t)
+			generateWhere(criteria, query, from, t)
 			entityManager.createQuery(query).resultList
 		} finally {
 			entityManager.close
 		}
 	}
 	
-	abstract def void generateWhere(CriteriaBuilder criteria, CriteriaQuery<T> query, T t)
+	abstract def void generateWhere(CriteriaBuilder criteria, CriteriaQuery<T> query, Root<T> camposCandidato,T t)
 	
 	def saveOrUpdate(T t) {
 		val entityManager = this.entityManager
@@ -48,7 +49,7 @@ abstract class RepoDefault<T> {
 				transaction.commit
 			]
 		} catch (PersistenceException e) {
-			//entityManager.transaction.rollback
+//			entityManager.transaction.rollback
 			throw new RuntimeException("AH, Ha ocurrido un error. JAJAJAJA", e)
 		} finally {
 			entityManager.close

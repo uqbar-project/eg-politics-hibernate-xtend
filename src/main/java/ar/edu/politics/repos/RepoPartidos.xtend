@@ -3,6 +3,7 @@ package ar.edu.politics.repos
 import ar.edu.politics.domain.Partido
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
+import javax.persistence.criteria.Root
 
 class RepoPartidos extends RepoDefault<Partido> {
 
@@ -19,10 +20,9 @@ class RepoPartidos extends RepoDefault<Partido> {
 		typeof(Partido)
 	}
 
-	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Partido> query, Partido partido) {
-		val camposPartido = query.from(entityType)
+	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Partido> query, Root<Partido> camposPartido, Partido partido) {
 		if (partido.nombre != null) {
-			criteria.equal(camposPartido.get("nombre"), partido.nombre)
+			query.where(criteria.equal(camposPartido.get("nombre"), partido.nombre))
 		}
 	}
 
