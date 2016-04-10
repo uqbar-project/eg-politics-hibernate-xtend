@@ -1,9 +1,9 @@
 package ar.edu.politics.repos
 
 import ar.edu.politics.domain.Candidato
-import org.uqbar.commons.model.CollectionBasedHome
+import org.uqbar.commons.model.CollectionBasedRepo
 
-class RepoCandidatos extends CollectionBasedHome<Candidato> {
+class RepoCandidatos extends CollectionBasedRepo<Candidato> {
 
 	static RepoCandidatos instance
 	

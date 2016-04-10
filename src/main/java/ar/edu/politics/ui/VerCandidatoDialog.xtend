@@ -4,6 +4,7 @@ import ar.edu.politics.appModel.VerCandidato
 import ar.edu.politics.domain.Promesa
 import java.awt.Color
 import java.text.SimpleDateFormat
+import java.util.Date
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -13,6 +14,8 @@ import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
+
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class VerCandidatoDialog extends Dialog<VerCandidato> {
 	
@@ -30,7 +33,7 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 			foreground = Color.DARK_GRAY
 		]
 		new Label(panelIzquierdo) => [
-			bindValueToProperty("candidato.nombre")
+			value <=> "candidato.nombre"
 			background = Color.LIGHT_GRAY
 			fontSize = 12
 		]
@@ -45,21 +48,22 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 		val panelPromesaNueva = new Panel(panelDerecho)
 		panelPromesaNueva.layout = new HorizontalLayout
 		new TextBox(panelPromesaNueva) => [
-			bindValueToProperty("nuevaPromesa")
+			value <=> "nuevaPromesa"
 			width = 200
 		]
 		new Button(panelPromesaNueva) => [
 			caption = "Agregar promesa"
 			onClick [ | this.modelObject.agregarPromesa ]
-			bindEnabledToProperty("puedeAgregarPromesa")
+			enabled <=> "puedeAgregarPromesa"
 		]
 		val gridPromesas = new Table(panelDerecho, typeof(Promesa)) => [
-			bindItemsToProperty("candidato.promesas")
+			items <=> "candidato.promesas"
 		]
+		// Columnas de la tabla de promesas
 		new Column<Promesa>(gridPromesas) => [
 			title = "Fecha"
 			fixedSize = 100
-			bindContentsToTransformer [ Promesa promesa | new SimpleDateFormat("dd/MM/yyyy").format(promesa.fecha) ] 
+			bindContentsToProperty("fecha").setTransformer = [ Date fecha | new SimpleDateFormat("dd/MM/yyyy").format(fecha) ] 
 		]
 		new Column<Promesa>(gridPromesas) => [
 			title = "Promesa"

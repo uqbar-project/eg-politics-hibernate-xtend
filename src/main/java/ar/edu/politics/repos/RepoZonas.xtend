@@ -1,9 +1,9 @@
 package ar.edu.politics.repos
 
 import ar.edu.politics.domain.Zona
-import org.uqbar.commons.model.CollectionBasedHome
+import org.uqbar.commons.model.CollectionBasedRepo
 
-class RepoZonas extends CollectionBasedHome<Zona> {
+class RepoZonas extends CollectionBasedRepo<Zona> {
 	
 	static RepoZonas instance
 	
