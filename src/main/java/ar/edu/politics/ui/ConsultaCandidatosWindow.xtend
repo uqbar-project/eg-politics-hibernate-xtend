@@ -11,6 +11,7 @@ import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class ConsultaCandidatosWindow extends SimpleWindow<ConsultaCandidatos> {
 	
@@ -21,7 +22,7 @@ class ConsultaCandidatosWindow extends SimpleWindow<ConsultaCandidatos> {
 	override protected addActions(Panel actionsPanel) {
 		new Button(actionsPanel) => [
 			caption = "Ver ficha"
-			bindEnabledToProperty("puedeVerFicha")
+			enabled <=> "puedeVerFicha"
 			onClick [ | 
 				val candidatoSeleccionado = this.modelObject.candidatoSeleccionado
 				new VerCandidatoDialog(this, new VerCandidato(candidatoSeleccionado)).open ]
@@ -34,15 +35,17 @@ class ConsultaCandidatosWindow extends SimpleWindow<ConsultaCandidatos> {
 		new Label(mainPanel).text = "Zona de votación"
 		new Selector(mainPanel) => [
 			allowNull = false
-			bindItemsToProperty("zonasDeVotacion")
-			bindValueToProperty("zonaSeleccionada")
+			items <=> "zonasDeVotacion"
+			value <=> "zonaSeleccionada"
 		]
 		
 		new Label(mainPanel).text = "Candidatos"
 		val gridCandidatos = new Table(mainPanel, typeof(Candidato)) => [
-			bindItemsToProperty("zonaSeleccionada.candidatos")
-			bindValueToProperty("candidatoSeleccionado")
+			items <=> "zonaSeleccionada.candidatos"
+			value <=> "candidatoSeleccionado"
 		]
+		
+		// Columnas
 		new Column<Candidato>(gridCandidatos) => [
 			title = "Candidato"
 			bindContentsToProperty("nombre")

@@ -1,4 +1,4 @@
-package ar.edu.politics.repos
+package ar.edu.politics.application
 
 import ar.edu.politics.domain.Candidato
 import ar.edu.politics.domain.Partido
@@ -6,9 +6,13 @@ import ar.edu.politics.domain.Peronista
 import ar.edu.politics.domain.Preservativo
 import ar.edu.politics.domain.Promesa
 import ar.edu.politics.domain.Zona
+import ar.edu.politics.repos.RepoCandidatos
+import ar.edu.politics.repos.RepoPartidos
+import ar.edu.politics.repos.RepoZonas
 import java.util.Date
+import org.uqbar.arena.bootstrap.Bootstrap
 
-class JuegoDeDatos {
+class PoliticsBootstrap implements Bootstrap {
 
 	Partido frejuli
 	Partido perone
@@ -136,10 +140,14 @@ class JuegoDeDatos {
 		}
 	}
 
-	def void init() {
+	override run() {
 		initPartidos
 		initCandidatos
 		initZonas
+	}
+	
+	override isPending() {
+		false
 	}
 	
 }

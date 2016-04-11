@@ -14,7 +14,7 @@ import org.hibernate.cfg.AnnotationConfiguration
 
 abstract class RepoDefault<T> {
 	
-	private static final SessionFactory sessionFactory = new AnnotationConfiguration().configure()
+	protected static final SessionFactory sessionFactory = new AnnotationConfiguration().configure()
 		.addAnnotatedClass(Zona)
 		.addAnnotatedClass(Candidato)
 		.addAnnotatedClass(Promesa)

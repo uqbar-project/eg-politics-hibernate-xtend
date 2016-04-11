@@ -14,7 +14,7 @@ class VerCandidato {
 	String nuevaPromesa
 	
 	new(Candidato candidato) {
-		this.candidato = candidato
+		this.candidato = RepoCandidatos.instance.get(candidato.id)
 	}
 	
 	def void agregarPromesa() {
