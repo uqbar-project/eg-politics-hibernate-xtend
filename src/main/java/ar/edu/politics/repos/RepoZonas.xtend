@@ -30,15 +30,10 @@ class RepoZonas extends RepoDefault<Zona> {
 	def Zona searchById(Long id) {
 		val session = openSession
 		try {
-			val zonas = session.createCriteria(Zona)
+			session.createCriteria(Zona)
 				.setFetchMode("candidatos", FetchMode.JOIN)
 				.add(Restrictions.eq("id", id))
-				.list
-			if (zonas.empty) {
-				return null
-			} else {
-				return zonas.head
-			}
+				.uniqueResult as Zona
 		} catch (HibernateException e) {
 			throw new RuntimeException(e)
 		} finally {

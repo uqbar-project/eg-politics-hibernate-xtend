@@ -67,11 +67,13 @@ class PoliticsBootstrap implements Bootstrap {
 			partido = frejuli
 			promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
 				new Promesa("Aborto para unos, banderitas para otros"))
+			opiniones = newArrayList("Me gusta", "Canta lindo")
 		]
 		benitez = new Candidato() => [
 			nombre = "Myriam Benitez"
 			partido = frejuli
 			promesas = newArrayList(new Promesa("Girar y girar hacia la libertad"))
+			opiniones = newArrayList("No la conozco", "Es una chorra", "Dos palabras: de-lin-cuen-te!")
 		]
 		yapura = new Candidato() => [
 			nombre = "Marcelo Yapura"

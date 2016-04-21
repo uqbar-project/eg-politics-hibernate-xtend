@@ -2,11 +2,14 @@ package ar.edu.politics.domain
 
 import java.util.List
 import javax.persistence.CascadeType
+import javax.persistence.CollectionTable
 import javax.persistence.Column
+import javax.persistence.ElementCollection
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -31,6 +34,11 @@ class Candidato {
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	List<Promesa> promesas = newArrayList 
+	
+	@ElementCollection
+	@CollectionTable(name="Opiniones", joinColumns=@JoinColumn(name="candidato_id"))
+	@Column(name="opiniones")
+	List<String> opiniones
 	
 	new() {
 		
