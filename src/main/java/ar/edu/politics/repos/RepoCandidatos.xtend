@@ -3,8 +3,8 @@ package ar.edu.politics.repos
 import ar.edu.politics.domain.Candidato
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
-import javax.persistence.criteria.Root
 import javax.persistence.criteria.JoinType
+import javax.persistence.criteria.Root
 
 class RepoCandidatos extends RepoDefault<Candidato> {
 
@@ -33,7 +33,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 			val criteria = entityManager.criteriaBuilder
 			val query = criteria.createQuery(typeof(Candidato))
 			val Root<Candidato> from = query.from(Candidato)
-			from.fetch("promesas")
+			from.fetch("promesas", JoinType.LEFT)
 			query
 				.select(from)
 				.where(criteria.equal(from.get("id"), id))

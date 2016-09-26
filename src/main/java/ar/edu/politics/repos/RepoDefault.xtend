@@ -43,7 +43,7 @@ abstract class RepoDefault<T> {
 	
 	abstract def void generateWhere(CriteriaBuilder criteria, CriteriaQuery<T> query, Root<T> camposCandidato,T t)
 	
-	def saveOrUpdate(T t) {
+	def save(T t) {
 		val entityManager = this.entityManager
 		try {
 			entityManager => [
@@ -52,6 +52,24 @@ abstract class RepoDefault<T> {
 				transaction.commit
 			]
 		} catch (PersistenceException e) {
+			e.printStackTrace
+			entityManager.transaction.rollback
+			throw new RuntimeException("AH, Ha ocurrido un error. JAJAJAJA", e)
+		} finally {
+			entityManager.close
+		}
+	}
+
+	def update(T t) {
+		val entityManager = this.entityManager
+		try {
+			entityManager => [
+				transaction.begin
+				merge(t)
+				transaction.commit
+			]
+		} catch (PersistenceException e) {
+			e.printStackTrace
 			entityManager.transaction.rollback
 			throw new RuntimeException("AH, Ha ocurrido un error. JAJAJAJA", e)
 		} finally {

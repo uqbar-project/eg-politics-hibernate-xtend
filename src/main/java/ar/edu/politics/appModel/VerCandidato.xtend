@@ -28,7 +28,7 @@ class VerCandidato {
 	}
 
 	def void actualizar() {
-		RepoCandidatos.instance.saveOrUpdate(candidato)
+		RepoCandidatos.instance.update(candidato)
 	}
 
 }
