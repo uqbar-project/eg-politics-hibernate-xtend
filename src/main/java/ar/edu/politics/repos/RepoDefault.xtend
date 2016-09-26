@@ -43,7 +43,7 @@ abstract class RepoDefault<T> {
 	
 	abstract def void generateWhere(CriteriaBuilder criteria, CriteriaQuery<T> query, Root<T> camposCandidato,T t)
 	
-	def save(T t) {
+	def create(T t) {
 		val entityManager = this.entityManager
 		try {
 			entityManager => [

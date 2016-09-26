@@ -1,6 +1,6 @@
 package ar.edu.politics.domain
 
-import java.util.Date
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -18,7 +18,7 @@ class Promesa {
 	private Long id
 	
 	@Column
-	Date fecha
+	LocalDate fecha
 	
 	@Column(length=255)
 	String accionPrometida
@@ -28,7 +28,7 @@ class Promesa {
 	}
 	
 	new(String accionPrometida) {
-		fecha = new Date
+		fecha = LocalDate.now
 		this.accionPrometida = accionPrometida
 	}
 	

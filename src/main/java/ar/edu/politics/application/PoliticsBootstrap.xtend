@@ -57,7 +57,7 @@ class PoliticsBootstrap implements Bootstrap {
 		val repoPartidos = RepoPartidos.instance
 		val listaCandidatos = repoPartidos.searchByExample(partido)
 		if (listaCandidatos.isEmpty) {
-			repoPartidos.save(partido)
+			repoPartidos.create(partido)
 			println("Candidato " + partido.nombre + " creado")
 		} else {
 			val partidoBD = listaCandidatos.head
@@ -126,7 +126,7 @@ class PoliticsBootstrap implements Bootstrap {
 		val repoCandidatos = RepoCandidatos.instance
 		val listaCandidatos = repoCandidatos.searchByExample(candidato)
 		if (listaCandidatos.isEmpty) {
-			repoCandidatos.save(candidato)
+			repoCandidatos.create(candidato)
 			println("Candidato " + candidato.nombre + " creado")
 		} else {
 			val candidatoBD = listaCandidatos.head
@@ -152,7 +152,7 @@ class PoliticsBootstrap implements Bootstrap {
 		val repoZonas = RepoZonas.instance
 		val listaZonas = repoZonas.searchByExample(zona)
 		if (listaZonas.isEmpty) {
-			repoZonas.save(zona)
+			repoZonas.create(zona)
 			println("Zona " + zona.descripcion + " creada")
 		} else {
 			val zonaBD = listaZonas.head

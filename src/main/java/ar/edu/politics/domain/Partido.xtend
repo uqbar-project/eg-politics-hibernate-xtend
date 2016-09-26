@@ -70,7 +70,7 @@ class Preservativo extends Partido {
 		if (fechaCreacion == null) {
 			throw new UserException("Debe ingresar fecha de creación")
 		}
-		if (fechaCreacion.compareTo(LocalDate.now()) > 0) {
+		if (fechaCreacion.compareTo(LocalDate.now) > 0) {
 			throw new UserException("La fecha de creación debe ser anterior a la de hoy")
 		}	
 	}	
