@@ -10,11 +10,11 @@ import java.util.List
 import org.hibernate.Criteria
 import org.hibernate.HibernateException
 import org.hibernate.SessionFactory
-import org.hibernate.cfg.AnnotationConfiguration
+import org.hibernate.cfg.Configuration
 
 abstract class RepoDefault<T> {
 	
-	protected static final SessionFactory sessionFactory = new AnnotationConfiguration().configure()
+	protected static final SessionFactory sessionFactory = new Configuration().configure()
 		.addAnnotatedClass(Zona)
 		.addAnnotatedClass(Candidato)
 		.addAnnotatedClass(Promesa)
