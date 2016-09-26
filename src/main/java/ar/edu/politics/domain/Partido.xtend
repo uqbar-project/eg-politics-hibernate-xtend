@@ -1,6 +1,6 @@
 package ar.edu.politics.domain
 
-import java.util.Date
+import java.time.LocalDate
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.UserException
@@ -42,7 +42,7 @@ class Peronista extends Partido {
 @Accessors
 class Preservativo extends Partido {
 
-	Date fechaCreacion
+	LocalDate fechaCreacion
 	
 	new() {
 		
@@ -53,7 +53,7 @@ class Preservativo extends Partido {
 		if (fechaCreacion == null) {
 			throw new UserException("Debe ingresar fecha de creación")
 		}
-		if (fechaCreacion.after(new Date)) {
+		if (fechaCreacion.compareTo(LocalDate.now) > 0) {
 			throw new UserException("La fecha de creación debe ser anterior a la de hoy")
 		}	
 	}	

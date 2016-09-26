@@ -1,6 +1,6 @@
 package ar.edu.politics.domain
 
-import java.util.List
+import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.UserException
@@ -11,7 +11,7 @@ import org.uqbar.commons.utils.Observable
 class Zona extends Entity {
 	
 	String descripcion
-	List<Candidato> candidatos = newArrayList
+	Set<Candidato> candidatos = newHashSet
 		
 	new() {
 		

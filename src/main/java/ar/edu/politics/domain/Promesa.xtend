@@ -1,6 +1,6 @@
 package ar.edu.politics.domain
 
-import java.util.Date
+import java.time.LocalDate
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
@@ -9,7 +9,7 @@ import org.uqbar.commons.utils.Observable
 @Accessors
 class Promesa {
 	
-	Date fecha
+	LocalDate fecha
 	String accionPrometida
 	
 	new() {
@@ -17,7 +17,7 @@ class Promesa {
 	}
 	
 	new(String accionPrometida) {
-		fecha = new Date
+		fecha = LocalDate.now
 		this.accionPrometida = accionPrometida
 	}
 	
