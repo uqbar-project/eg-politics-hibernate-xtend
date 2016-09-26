@@ -1,6 +1,6 @@
 package ar.edu.politics.domain
 
-import java.util.Date
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.DiscriminatorColumn
 import javax.persistence.DiscriminatorType
@@ -66,7 +66,7 @@ class Peronista extends Partido {
 class Preservativo extends Partido {
 
 	@Column
-	Date fechaCreacion
+	LocalDate fechaCreacion
 	
 	new() {
 		
@@ -77,7 +77,7 @@ class Preservativo extends Partido {
 		if (fechaCreacion == null) {
 			throw new UserException("Debe ingresar fecha de creación")
 		}
-		if (fechaCreacion.after(new Date)) {
+		if (fechaCreacion.compareTo(LocalDate.now) > 0) {
 			throw new UserException("La fecha de creación debe ser anterior a la de hoy")
 		}	
 	}	

@@ -3,8 +3,8 @@ package ar.edu.politics.ui
 import ar.edu.politics.appModel.VerCandidato
 import ar.edu.politics.domain.Promesa
 import java.awt.Color
-import java.text.SimpleDateFormat
-import java.util.Date
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -63,7 +63,8 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 		new Column<Promesa>(gridPromesas) => [
 			title = "Fecha"
 			fixedSize = 100
-			bindContentsToProperty("fecha").setTransformer = [ Date fecha | new SimpleDateFormat("dd/MM/yyyy").format(fecha) ] 
+			bindContentsToProperty("fecha").setTransformer = [ LocalDate fecha | fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+			] 
 		]
 		new Column<Promesa>(gridPromesas) => [
 			title = "Promesa"
