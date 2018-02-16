@@ -8,7 +8,7 @@ class RepoCandidatos extends CollectionBasedRepo<Candidato> {
 	static RepoCandidatos instance
 	
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoCandidatos()
 		}
 		return instance

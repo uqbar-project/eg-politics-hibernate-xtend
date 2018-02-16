@@ -43,6 +43,7 @@ class ConsultaCandidatosWindow extends SimpleWindow<ConsultaCandidatos> {
 		val gridCandidatos = new Table(mainPanel, typeof(Candidato)) => [
 			items <=> "zonaSeleccionada.candidatos"
 			value <=> "candidatoSeleccionado"
+			numberVisibleRows = 5
 		]
 		
 		// Columnas

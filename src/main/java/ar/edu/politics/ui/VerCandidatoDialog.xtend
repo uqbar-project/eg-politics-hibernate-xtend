@@ -34,7 +34,7 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 		]
 		new Label(panelIzquierdo) => [
 			value <=> "candidato.nombre"
-			background = Color.LIGHT_GRAY
+			background = Color.CYAN
 			fontSize = 12
 		]
 		
@@ -58,6 +58,7 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 		]
 		val gridPromesas = new Table(panelDerecho, typeof(Promesa)) => [
 			items <=> "candidato.promesas"
+			numberVisibleRows = 5
 		]
 		// Columnas de la tabla de promesas
 		new Column<Promesa>(gridPromesas) => [

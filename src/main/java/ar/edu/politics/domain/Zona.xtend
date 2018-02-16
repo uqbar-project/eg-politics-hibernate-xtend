@@ -3,8 +3,8 @@ package ar.edu.politics.domain
 import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.Entity
-import org.uqbar.commons.model.UserException
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.exceptions.UserException
 
 @Observable
 @Accessors
@@ -18,7 +18,7 @@ class Zona extends Entity {
 	}
 	
 	def void validar() {
-		if (descripcion == null) {
+		if (descripcion === null) {
 			throw new UserException("Debe ingresar descripcion")
 		}
 		if (candidatos.isEmpty) {

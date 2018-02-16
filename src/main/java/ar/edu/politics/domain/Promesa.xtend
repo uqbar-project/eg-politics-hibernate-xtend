@@ -2,8 +2,8 @@ package ar.edu.politics.domain
 
 import java.time.LocalDate
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.exceptions.UserException
 
 @Observable
 @Accessors
@@ -22,10 +22,10 @@ class Promesa {
 	}
 	
 	def void validar() {
-		if (fecha == null) {
+		if (fecha === null) {
 			throw new UserException("Debe ingresar fecha")
 		}
-		if (accionPrometida == null) {
+		if (accionPrometida === null) {
 			throw new UserException("Debe ingresar una acción en la promesa")
 		}
 	}
