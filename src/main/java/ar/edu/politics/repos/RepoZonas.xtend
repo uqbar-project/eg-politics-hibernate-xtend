@@ -11,7 +11,7 @@ class RepoZonas extends RepoDefault<Zona> {
 	static RepoZonas instance
 
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoZonas()
 		}
 		return instance
@@ -22,7 +22,7 @@ class RepoZonas extends RepoDefault<Zona> {
 	}
 	
 	override addQueryByExample(Criteria criteria, Zona zona) {
-		if (zona.descripcion != null) {
+		if (zona.descripcion !== null) {
 			criteria.add(Restrictions.eq("descripcion", zona.descripcion))
 		}
 	}

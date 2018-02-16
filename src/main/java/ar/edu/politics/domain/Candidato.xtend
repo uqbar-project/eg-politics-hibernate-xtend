@@ -13,9 +13,9 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.model.UserException
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.exceptions.UserException
+import org.uqbar.commons.model.utils.ObservableUtils
 
 @Observable
 @Accessors
@@ -45,10 +45,10 @@ class Candidato {
 	}
 	
 	def void validar() {
-		if (nombre == null) {
+		if (nombre === null) {
 			throw new UserException("Debe ingresar descripcion")
 		}
-		if (partido == null) {
+		if (partido === null) {
 			throw new UserException("El candidato debe estar participando en un partido político")
 		}
 	}

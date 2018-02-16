@@ -170,7 +170,9 @@ class PoliticsBootstrap implements Bootstrap {
 	}
 
 	override isPending() {
-		false
+		// Si no tiene zonas de votación significa que hay que 
+		// inicializar la aplicación con datos de prueba
+		RepoZonas.instance.searchByExample(new Zona).isEmpty
 	}
 
 }

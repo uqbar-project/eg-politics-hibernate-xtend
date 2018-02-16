@@ -11,7 +11,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 	static RepoCandidatos instance
 	
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoCandidatos()
 		}
 		return instance
@@ -22,7 +22,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 	}
 
 	override addQueryByExample(Criteria criteria, Candidato candidato) {
-		if (candidato.nombre != null) {
+		if (candidato.nombre !== null) {
 			criteria.add(Restrictions.eq("nombre", candidato.nombre))
 		}
 	}

@@ -9,7 +9,7 @@ class RepoPartidos extends RepoDefault<Partido> {
 	static RepoPartidos instance
 	
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoPartidos()
 		}
 		return instance
@@ -20,7 +20,7 @@ class RepoPartidos extends RepoDefault<Partido> {
 	}
 
 	override addQueryByExample(Criteria criteria, Partido partido) {
-		if (partido.nombre != null) {
+		if (partido.nombre !== null) {
 			criteria.add(Restrictions.eq("nombre", partido.nombre))
 		}
 	}
