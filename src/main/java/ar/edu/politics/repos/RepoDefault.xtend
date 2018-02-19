@@ -54,7 +54,7 @@ abstract class RepoDefault<T> {
 		} catch (PersistenceException e) {
 			e.printStackTrace
 			entityManager.transaction.rollback
-			throw new RuntimeException("AH, Ha ocurrido un error. JAJAJAJA", e)
+			throw new RuntimeException("Ocurrió un error, la operación no puede completarse", e)
 		} finally {
 			entityManager.close
 		}
@@ -71,7 +71,7 @@ abstract class RepoDefault<T> {
 		} catch (PersistenceException e) {
 			e.printStackTrace
 			entityManager.transaction.rollback
-			throw new RuntimeException("AH, Ha ocurrido un error. JAJAJAJA", e)
+			throw new RuntimeException("Ocurrió un error, la operación no puede completarse", e)
 		} finally {
 			entityManager.close
 		}
