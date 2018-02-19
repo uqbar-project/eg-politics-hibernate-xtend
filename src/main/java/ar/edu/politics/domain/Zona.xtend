@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.exceptions.UserException
 
 @Observable
 @Entity
@@ -30,7 +30,7 @@ class Zona {
 	}
 	
 	def void validar() {
-		if (descripcion == null) {
+		if (descripcion === null) {
 			throw new UserException("Debe ingresar descripcion")
 		}
 		if (candidatos.isEmpty) {

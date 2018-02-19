@@ -10,7 +10,7 @@ class RepoPartidos extends RepoDefault<Partido> {
 	static RepoPartidos instance
 
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoPartidos()
 		}
 		return instance
@@ -21,7 +21,7 @@ class RepoPartidos extends RepoDefault<Partido> {
 	}
 
 	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Partido> query, Root<Partido> camposPartido, Partido partido) {
-		if (partido.nombre != null) {
+		if (partido.nombre !== null) {
 			query.where(criteria.equal(camposPartido.get("nombre"), partido.nombre))
 		}
 	}

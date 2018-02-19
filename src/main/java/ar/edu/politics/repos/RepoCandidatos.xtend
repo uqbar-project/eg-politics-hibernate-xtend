@@ -11,7 +11,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 	static RepoCandidatos instance
 	
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoCandidatos()
 		}
 		return instance
@@ -22,7 +22,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 	}
 	
 	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Candidato> query, Root<Candidato> camposCandidato, Candidato candidato) {
-		if (candidato.nombre != null) {
+		if (candidato.nombre !== null) {
 			query.where(criteria.equal(camposCandidato.get("nombre"), candidato.nombre))
 		} 
 	}

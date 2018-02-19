@@ -58,6 +58,7 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 		]
 		val gridPromesas = new Table(panelDerecho, typeof(Promesa)) => [
 			items <=> "candidato.promesas"
+			numberVisibleRows = 5
 		]
 		// Columnas de la tabla de promesas
 		new Column<Promesa>(gridPromesas) => [

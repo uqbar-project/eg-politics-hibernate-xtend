@@ -5,8 +5,8 @@ import ar.edu.politics.domain.Zona
 import ar.edu.politics.repos.RepoZonas
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.utils.Dependencies
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.annotations.Dependencies
+import org.uqbar.commons.model.annotations.Observable
 
 @Observable
 @Accessors
@@ -22,7 +22,7 @@ class ConsultaCandidatos {
 	
 	@Dependencies("candidatoSeleccionado")
 	def boolean getPuedeVerFicha() {
-		candidatoSeleccionado != null
+		candidatoSeleccionado !== null
 	}
 
 	def void setZonaSeleccionada(Zona zona) {

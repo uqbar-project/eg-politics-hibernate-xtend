@@ -168,7 +168,7 @@ class PoliticsBootstrap implements Bootstrap {
 	}
 
 	override isPending() {
-		false
+		RepoZonas.instance.searchByExample(new Zona).isEmpty
 	}
 
 }

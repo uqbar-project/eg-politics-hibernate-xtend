@@ -8,8 +8,8 @@ import javax.persistence.Id
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.annotations.Observable
+import org.uqbar.commons.model.exceptions.UserException
 
 @Observable
 @Entity
@@ -27,7 +27,7 @@ abstract class Partido {
 	int afiliados
 	
 	def void validar() {
-		if (nombre == null) {
+		if (nombre === null) {
 			throw new UserException("Debe ingresar nombre")
 		}
 		if (afiliados < 1000) {
@@ -67,7 +67,7 @@ class Preservativo extends Partido {
 	
 	override validar() {
 		super.validar()
-		if (fechaCreacion == null) {
+		if (fechaCreacion === null) {
 			throw new UserException("Debe ingresar fecha de creación")
 		}
 		if (fechaCreacion.compareTo(LocalDate.now) > 0) {

@@ -10,7 +10,7 @@ class RepoZonas extends RepoDefault<Zona> {
 	static RepoZonas instance
 
 	static def getInstance() {
-		if (instance == null) {
+		if (instance === null) {
 			instance = new RepoZonas()
 		}
 		return instance
@@ -21,7 +21,7 @@ class RepoZonas extends RepoDefault<Zona> {
 	}
 	
 	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Zona> query, Root<Zona> camposZona, Zona zona) {
-		if (zona.descripcion != null) {
+		if (zona.descripcion !== null) {
 			query.where(criteria.equal(camposZona.get("descripcion"), zona.descripcion))
 		}
 	}
