@@ -1,6 +1,6 @@
 # Partidos políticos
 
-![Travis](https://travis-ci.org/uqbar-project/eg-politics-hibernate-xtend.svg?branch=jpa)
+[![Build Status](https://travis-ci.org/uqbar-project/eg-politics-hibernate-xtend.svg?branch=jpa)](https://travis-ci.org/uqbar-project/eg-politics-hibernate-xtend)
 
 ## Objetivos
 Es un ejemplo que integra Arena con un modelo que persiste a un motor relacional. 
