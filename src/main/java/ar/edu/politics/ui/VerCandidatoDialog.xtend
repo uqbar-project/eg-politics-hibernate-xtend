@@ -16,6 +16,7 @@ import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.List
 
 class VerCandidatoDialog extends Dialog<VerCandidato> {
 	
@@ -49,7 +50,7 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 		panelPromesaNueva.layout = new HorizontalLayout
 		new TextBox(panelPromesaNueva) => [
 			value <=> "nuevaPromesa"
-			width = 200
+			width = 400
 		]
 		new Button(panelPromesaNueva) => [
 			caption = "Agregar promesa"
@@ -71,6 +72,27 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 			title = "Promesa"
 			fixedSize = 500
 			bindContentsToProperty("accionPrometida")
+		]
+
+		// Opiniones		
+		new Label(panelDerecho) => [
+			text = "Opiniones"
+			foreground = Color.DARK_GRAY
+		]
+		new List(panelDerecho) => [
+			items <=> "candidato.opiniones"
+			height = 300
+		]
+		val panelOpinionNueva = new Panel(panelDerecho)
+		panelOpinionNueva.layout = new HorizontalLayout
+		new TextBox(panelOpinionNueva) => [
+			width = 400
+			value <=> "nuevaOpinion"
+		]
+		new Button(panelOpinionNueva) => [
+			caption = "Agregar opinión"
+			onClick [ | this.modelObject.agregarOpinion ]
+			enabled <=> "puedeAgregarOpinion"
 		]
 
 		new Button(panelDerecho) => [

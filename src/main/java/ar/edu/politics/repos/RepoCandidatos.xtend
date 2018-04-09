@@ -34,6 +34,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 			val query = criteria.createQuery(typeof(Candidato))
 			val Root<Candidato> from = query.from(Candidato)
 			from.fetch("promesas", JoinType.LEFT)
+			from.fetch("opiniones", JoinType.LEFT)
 			query
 				.select(from)
 				.where(criteria.equal(from.get("id"), id))

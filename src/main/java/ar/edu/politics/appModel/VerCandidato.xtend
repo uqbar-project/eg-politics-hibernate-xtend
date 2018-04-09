@@ -12,7 +12,8 @@ class VerCandidato {
 
 	Candidato candidato
 	String nuevaPromesa
-
+	String nuevaOpinion
+	
 	new(Candidato candidato) {
 		this.candidato = RepoCandidatos.instance.get(candidato.id)
 	}
@@ -30,5 +31,14 @@ class VerCandidato {
 	def void actualizar() {
 		RepoCandidatos.instance.update(candidato)
 	}
+	
+	def agregarOpinion() {
+		candidato.agregarOpinion(nuevaOpinion)
+		nuevaOpinion = ""
+	}
 
+	@Dependencies("nuevaOpinion")
+	def boolean getPuedeAgregarOpinion() {
+		nuevaOpinion !== null && !nuevaOpinion.equals("")
+	}
 }

@@ -1,8 +1,10 @@
 package ar.edu.politics.domain
 
 import java.util.List
+import java.util.Set
 import javax.persistence.CascadeType
 import javax.persistence.Column
+import javax.persistence.ElementCollection
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
@@ -31,6 +33,9 @@ class Candidato {
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	List<Promesa> promesas = newArrayList 
 	
+	@ElementCollection
+	Set<String> opiniones
+	
 	new() {
 		
 	}
@@ -51,6 +56,11 @@ class Candidato {
 	def agregarPromesa(String nuevaPromesa) {
 		promesas.add(new Promesa(nuevaPromesa))
 		ObservableUtils.firePropertyChanged(this, "promesas", promesas)
+	}
+	
+	def agregarOpinion(String opinion) {
+		opiniones.add(opinion)
+		ObservableUtils.firePropertyChanged(this, "opiniones", opiniones)
 	}
 
 }
