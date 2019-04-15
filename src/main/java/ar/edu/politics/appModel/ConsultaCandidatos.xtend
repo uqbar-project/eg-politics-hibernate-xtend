@@ -18,6 +18,7 @@ class ConsultaCandidatos {
 	
 	new() {
 		zonasDeVotacion = RepoZonas.instance.allInstances
+		setZonaSeleccionada = zonasDeVotacion.head
 	}
 	
 	@Dependencies("candidatoSeleccionado")
