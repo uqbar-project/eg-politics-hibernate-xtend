@@ -17,7 +17,7 @@ import org.uqbar.commons.model.exceptions.UserException
 class Zona {
 
 	@Id @GeneratedValue
-	private Long id
+	Long id
 	
 	@Column(length=150)
 	String descripcion
@@ -25,10 +25,6 @@ class Zona {
 	@OneToMany(fetch=FetchType.LAZY)	
 	Set<Candidato> candidatos = newHashSet
 		
-	new() {
-		
-	}
-	
 	def void validar() {
 		if (descripcion === null) {
 			throw new UserException("Debe ingresar descripcion")

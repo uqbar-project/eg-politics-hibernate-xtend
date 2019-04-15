@@ -17,7 +17,7 @@ class RepoPartidos extends RepoDefault<Partido> {
 	}
 
 	override getEntityType() {
-		typeof(Partido)
+		Partido
 	}
 
 	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Partido> query, Root<Partido> camposPartido, Partido partido) {

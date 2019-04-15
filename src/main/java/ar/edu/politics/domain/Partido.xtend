@@ -18,7 +18,7 @@ import org.uqbar.commons.model.exceptions.UserException
 abstract class Partido {
 	
 	@Id @GeneratedValue
-	private Long id
+	Long id
 	
 	@Column(length=150)
 	String nombre
@@ -48,10 +48,6 @@ class Peronista extends Partido {
 	@Column
 	boolean populista
 	
-	new() {
-		
-	}
-	
 }
 
 @Accessors
@@ -60,10 +56,6 @@ class Preservativo extends Partido {
 
 	@Column
 	LocalDate fechaCreacion
-	
-	new() {
-		
-	}
 	
 	override validar() {
 		super.validar()

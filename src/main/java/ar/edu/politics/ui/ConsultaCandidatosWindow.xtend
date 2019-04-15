@@ -40,7 +40,7 @@ class ConsultaCandidatosWindow extends SimpleWindow<ConsultaCandidatos> {
 		]
 		
 		new Label(mainPanel).text = "Candidatos"
-		val gridCandidatos = new Table(mainPanel, typeof(Candidato)) => [
+		val gridCandidatos = new Table(mainPanel, Candidato) => [
 			items <=> "zonaSeleccionada.candidatos"
 			value <=> "candidatoSeleccionado"
 			numberVisibleRows = 5

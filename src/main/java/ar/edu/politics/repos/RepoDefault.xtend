@@ -10,18 +10,18 @@ import javax.persistence.criteria.Root
 
 abstract class RepoDefault<T> {
 	
-	private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Politics")
+	static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Politics")
 	 
 	def List<T> allInstances() {
 		val entityManager = this.entityManager
 		try {
 			val criteria = entityManager.criteriaBuilder
-			val query = criteria.createQuery as CriteriaQuery<T>
+			val query = criteria.createQuery(entityType)
 			val from = query.from(entityType)
 			query.select(from)
 			entityManager.createQuery(query).resultList
 		} finally {
-			entityManager.close
+			entityManager?.close
 		}
 	}
 	
@@ -31,13 +31,13 @@ abstract class RepoDefault<T> {
 		val entityManager = this.entityManager
 		try {
 			val criteria = entityManager.criteriaBuilder
-			val query = criteria.createQuery as CriteriaQuery<T>
+			val query = criteria.createQuery(entityType)
 			val from = query.from(entityType)
 			query.select(from)
 			generateWhere(criteria, query, from, t)
 			entityManager.createQuery(query).resultList
 		} finally {
-			entityManager.close
+			entityManager?.close
 		}
 	}
 	
@@ -56,7 +56,7 @@ abstract class RepoDefault<T> {
 			entityManager.transaction.rollback
 			throw new RuntimeException("Ocurrió un error, la operación no puede completarse", e)
 		} finally {
-			entityManager.close
+			entityManager?.close
 		}
 	}
 
@@ -73,7 +73,7 @@ abstract class RepoDefault<T> {
 			entityManager.transaction.rollback
 			throw new RuntimeException("Ocurrió un error, la operación no puede completarse", e)
 		} finally {
-			entityManager.close
+			entityManager?.close
 		}
 	}
 

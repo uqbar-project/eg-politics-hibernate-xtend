@@ -18,7 +18,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 	}
 	
 	override getEntityType() {
-		typeof(Candidato)
+		Candidato
 	}
 	
 	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Candidato> query, Root<Candidato> camposCandidato, Candidato candidato) {
@@ -31,8 +31,8 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 		val entityManager = this.entityManager
 		try {
 			val criteria = entityManager.criteriaBuilder
-			val query = criteria.createQuery(typeof(Candidato))
-			val Root<Candidato> from = query.from(Candidato)
+			val query = criteria.createQuery(entityType)
+			val from = query.from(entityType)
 			from.fetch("promesas", JoinType.LEFT)
 			from.fetch("opiniones", JoinType.LEFT)
 			query
@@ -40,7 +40,7 @@ class RepoCandidatos extends RepoDefault<Candidato> {
 				.where(criteria.equal(from.get("id"), id))
 			entityManager.createQuery(query).singleResult
 		} finally {
-			entityManager.close
+			entityManager?.close
 		}
 	}
 

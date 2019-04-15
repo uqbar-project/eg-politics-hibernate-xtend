@@ -17,7 +17,7 @@ class RepoZonas extends RepoDefault<Zona> {
 	}
 
 	override getEntityType() {
-		typeof(Zona)
+		Zona
 	}
 	
 	override generateWhere(CriteriaBuilder criteria, CriteriaQuery<Zona> query, Root<Zona> camposZona, Zona zona) {
@@ -30,20 +30,15 @@ class RepoZonas extends RepoDefault<Zona> {
 		val entityManager = entityManager
 		try {
 			val criteria = entityManager.criteriaBuilder
-			val query = criteria.createQuery
+			val query = criteria.createQuery(entityType)
 			val camposZona = query.from(entityType)
 			camposZona.fetch("candidatos")
 			query.select(camposZona)
 			query.where(criteria.equal(camposZona.get("id"), id))
-			val result = entityManager.createQuery(query).resultList
+			entityManager.createQuery(query).singleResult
 				
-			if (result.isEmpty) {
-				null
-			} else {
-				result.head as Zona
-			}
 		} finally {
-			entityManager.close
+			entityManager?.close
 		}
 	}
 	
