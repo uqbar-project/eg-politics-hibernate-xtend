@@ -17,18 +17,14 @@ import org.uqbar.commons.model.exceptions.UserException
 class Zona {
 
 	@Id @GeneratedValue
-	private Long id
-	
+	Long id
+
 	@Column(length=150)
 	String descripcion
 
-	@OneToMany(fetch=FetchType.LAZY)	
+	@OneToMany(fetch=FetchType.LAZY)
 	Set<Candidato> candidatos = newHashSet
-		
-	new() {
-		
-	}
-	
+
 	def void validar() {
 		if (descripcion === null) {
 			throw new UserException("Debe ingresar descripcion")
@@ -37,9 +33,22 @@ class Zona {
 			throw new UserException("Debe haber al menos un candidato en la zona")
 		}
 	}
-	
+
 	override toString() {
 		descripcion
 	}
-	
+
+	override equals(Object obj) {
+		try {
+			val other = obj as Zona
+			id == other?.id
+		} catch (ClassCastException e) {
+			return false
+		}
+	}
+
+	override hashCode() {
+		if(id !== null) id.hashCode else super.hashCode
+	}
+
 }

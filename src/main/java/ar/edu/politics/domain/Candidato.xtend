@@ -22,7 +22,7 @@ import org.uqbar.commons.model.utils.ObservableUtils
 class Candidato {
 	
 	@Id @GeneratedValue
-	private Long id
+	Long id
 	
 	@Column(length=150)
 	String nombre
@@ -35,10 +35,6 @@ class Candidato {
 	
 	@ElementCollection
 	Set<String> opiniones
-	
-	new() {
-		
-	}
 	
 	def void validar() {
 		if (nombre === null) {

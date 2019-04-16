@@ -15,7 +15,7 @@ import org.uqbar.commons.model.exceptions.UserException
 class Promesa {
 	
 	@Id @GeneratedValue
-	private Long id
+	Long id
 	
 	@Column
 	LocalDate fecha
