@@ -22,7 +22,6 @@
 		</repository>
 	</repositories>
 
-	<!-- Dependencias de Hibernate y de conexión a la base de datos -->
 	<dependencies>
         <dependency>
             <groupId>org.uqbar-project</groupId>
@@ -50,6 +49,7 @@
 			<version>5.5.2</version>
 			<scope>test</scope>
 		</dependency>	
+		<!-- Dependencias de Hibernate y de conexión a la base de datos -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -62,7 +62,7 @@
 		</dependency>
 	</dependencies>
 
-<build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
