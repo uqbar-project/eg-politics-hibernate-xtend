@@ -48,7 +48,7 @@ class Zona {
 	}
 
 	override hashCode() {
-		if(id !== null) id.hashCode else super.hashCode
+		if (id !== null) id.hashCode else super.hashCode
 	}
 
 }

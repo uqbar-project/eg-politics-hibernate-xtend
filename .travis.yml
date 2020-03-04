@@ -1,7 +1,15 @@
+dist: trusty
 language: java
+
+service:
+  - mysql
+
 jdk:
   - oraclejdk8
 
+before_install:
+  - echo "USE mysql;\nSET PASSWORD FOR root@localhost = PASSWORD('');\nFLUSH PRIVILEGES;\n" | mysql -u root
+  - mysql --user=root -e 'CREATE DATABASE IF NOT EXISTS politics;'
 
-
-
+script:
+  - mvn -e -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID clean install
