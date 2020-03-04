@@ -67,52 +67,47 @@ class PoliticsBootstrap implements Bootstrap {
 	}
 
 	def void initCandidatos() {
-		sosa = new Candidato() =>
-			[
-				nombre = "Julio Sosa"
-				partido = frejuli
-				promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
-					new Promesa("Aborto para unos, banderitas para otros"))
-			]
+		sosa = new Candidato() => [
+			nombre = "Julio Sosa"
+			partido = frejuli
+			promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
+				new Promesa("Aborto para unos, banderitas para otros"))
+		]
 		benitez = new Candidato() => [
 			nombre = "Myriam Benitez"
 			partido = frejuli
 			promesas = newArrayList(new Promesa("Girar y girar hacia la libertad"))
 		]
-		yapura = new Candidato() =>
-			[
-				nombre = "Marcelo Yapura"
-				partido = frejuli
-				promesas = newArrayList(new Promesa("Terminar con la pobreza"),
-					new Promesa("Que todos los docentes de la UTN cobren en euros"))
-			]
-		ramos = new Candidato() =>
-			[
-				nombre = "Manuel Ramos"
-				partido = perone
-				promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
-					new Promesa("Recuperar la confianza de los argentinos"))
-			]
+		yapura = new Candidato() => [
+			nombre = "Marcelo Yapura"
+			partido = frejuli
+			promesas = newArrayList(new Promesa("Terminar con la pobreza"),
+				new Promesa("Que todos los docentes de la UTN cobren en euros"))
+		]
+		ramos = new Candidato() => [
+			nombre = "Manuel Ramos"
+			partido = perone
+			promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
+				new Promesa("Recuperar la confianza de los argentinos"))
+		]
 		monti = new Candidato() => [
 			nombre = "Yaco Monti"
 			partido = perone
 			promesas = newArrayList(new Promesa("Terminar con la inseguridad"), new Promesa("Recuperar la dignidad"))
 		]
-		rota = new Candidato() =>
-			[
-				nombre = "Nino Rota"
-				partido = prime
-				promesas = newArrayList(new Promesa("Ganarle a la pobreza"),
-					new Promesa("Sacar el cepo a la moneda extranjera"),
-					new Promesa("Eliminar el impuesto a las ganancias"))
-			]
-		cafrune = new Candidato() =>
-			[
-				nombre = "Yamila Cafrune"
-				partido = prime
-				promesas = newArrayList(new Promesa("Terminar con Futbol para Todos"),
-					new Promesa("Privatizar las empresas del estado"), new Promesa("Dolarizar la economia"))
-			]
+		rota = new Candidato() => [
+			nombre = "Nino Rota"
+			partido = prime
+			promesas = newArrayList(new Promesa("Ganarle a la pobreza"),
+				new Promesa("Sacar el cepo a la moneda extranjera"),
+				new Promesa("Eliminar el impuesto a las ganancias"))
+		]
+		cafrune = new Candidato() => [
+			nombre = "Yamila Cafrune"
+			partido = prime
+			promesas = newArrayList(new Promesa("Terminar con Futbol para Todos"),
+				new Promesa("Privatizar las empresas del estado"), new Promesa("Dolarizar la economia"))
+		]
 		this.crearCandidato(sosa)
 		this.crearCandidato(benitez)
 		this.crearCandidato(yapura)
