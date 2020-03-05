@@ -23,7 +23,7 @@ class RepoCandidatos extends CollectionBasedRepo<Candidato> {
 	}
 	
 	override getEntityType() {
-		typeof(Candidato)
+		Candidato
 	}
 	
 }

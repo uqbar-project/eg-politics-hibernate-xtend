@@ -23,7 +23,7 @@ class RepoZonas extends CollectionBasedRepo<Zona> {
 	}
 	
 	override getEntityType() {
-		typeof(Zona)
+		Zona
 	}
 	
 }

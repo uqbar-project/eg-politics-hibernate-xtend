@@ -56,7 +56,7 @@ class VerCandidatoDialog extends Dialog<VerCandidato> {
 			onClick [ | this.modelObject.agregarPromesa ]
 			enabled <=> "puedeAgregarPromesa"
 		]
-		val gridPromesas = new Table(panelDerecho, typeof(Promesa)) => [
+		val gridPromesas = new Table(panelDerecho, Promesa) => [
 			items <=> "candidato.promesas"
 			numberVisibleRows = 5
 		]
