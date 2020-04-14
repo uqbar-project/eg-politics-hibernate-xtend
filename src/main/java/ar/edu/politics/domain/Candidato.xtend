@@ -1,7 +1,6 @@
 package ar.edu.politics.domain
 
 import java.util.List
-import java.util.Set
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.ElementCollection
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
+import javax.persistence.OrderColumn
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.annotations.Observable
 import org.uqbar.commons.model.exceptions.UserException
@@ -31,10 +31,12 @@ class Candidato {
 	Partido partido
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OrderColumn
 	List<Promesa> promesas = newArrayList 
 	
 	@ElementCollection
-	Set<String> opiniones
+	@OrderColumn
+	List<String> opiniones = newArrayList
 	
 	def void validar() {
 		if (nombre === null) {
